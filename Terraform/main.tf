@@ -7,7 +7,7 @@ terraform {
   }
   # backend "s3" {
   #   bucket = "ife-devops-class-001"
-  #   region = "eu-west-2"
+  #   region = "us-east-1"
   #   key = "terraform.tfstate"
   #   dynamodb_table = "devop-class"
   #   encrypt = true
@@ -16,7 +16,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "eu-west-2"
+  region = "us-east-1"
 }
 
 # Create a VPC
@@ -100,7 +100,7 @@ resource "aws_security_group" "allow_ssh" {
 
 resource "aws_key_pair" "devop-class-ssh-key" {
   key_name   = "deploy-keys"
-  public_key = file("~/.ssh/id_ed25519.pub")
+  public_key = file("~/.ssh/id_rsa.pub")
 }
 
 data "aws_ami" "ubuntu" {
