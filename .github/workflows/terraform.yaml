@@ -35,14 +35,14 @@ jobs:
       - name: Setup SSH
         run: |
            mkdir ~/.ssh
-           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519.pub
+           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa.pub
        
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2
+          aws-access-key-id: ${{ secrets.TF_USER_AWS_KEY }}
+          aws-secret-access-key: ${{ secrets.TF_USER_AWS_SECRET }}
+          aws-region: us-east-1
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
