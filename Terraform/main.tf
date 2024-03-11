@@ -135,3 +135,4 @@ resource "aws_instance" "devop-class-instance" {
 output "ec2_public_ip" {
   value = aws_instance.devop-class-instance.public_ip
 }
+
